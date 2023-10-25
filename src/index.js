@@ -28,6 +28,7 @@ function slideToNext() {
   if (current === imagesArray.length - 1) return;
   slide("-");
   current = current + 1;
+  changeSelected();
   changeForward();
 }
 
@@ -35,6 +36,7 @@ function slideToPrevious() {
   if (current <= 0) return;
   slide("+");
   current = current - 1;
+  changeSelected();
   changeForward();
 }
 function changeForward() {
@@ -56,7 +58,12 @@ function slide(op) {
     image.style.transition = "left 1s";
   });
 }
-
+function changeSelected() {
+  const selected = document.querySelector('input[image-id="0"]');
+  selected.checked = false;
+  const toBeSelected = document.querySelector(`input[image-id="${current}"]`);
+  toBeSelected.checked = true;
+}
 function createCircles() {
   const div = document.createElement("div");
   for (let i = 0; i < imagesArray.length; i++) {
@@ -64,6 +71,9 @@ function createCircles() {
     input.setAttribute("type", "radio");
     input.setAttribute("name", "image");
     input.setAttribute("image-id", i);
+    if (i === 0) {
+      input.setAttribute("checked", true);
+    }
     input.addEventListener("click", slideToChosen);
     div.append(input);
   }
