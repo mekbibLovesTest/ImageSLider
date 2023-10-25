@@ -17,6 +17,7 @@ img {
   width: var(--image-width);
   height: var(--image-height);
   position: relative;
+  left: 0px;
 }
 
 
