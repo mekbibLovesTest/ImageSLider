@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --image-height:300px;
+  --image-width:100vw;
+}
+.imageHolder {
+  width: var(--image-width);
+  display: flex;
+  overflow: hidden;
+  height: var(--image-height);
+}
+img {
+  width: var(--image-width);
+  height: var(--image-height);
+  position: relative;
+}
+
+
